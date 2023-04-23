@@ -1,0 +1,1 @@
+# graphics_card_catalog_app
