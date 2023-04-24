@@ -1,0 +1,9 @@
+
+<div class="list-container">
+  <!-- <ng-container *ngFor="let graphicsCard of graphicCards$ | async">
+    <app-graphic-card-detail [graphicCard]="graphicsCard"></app-graphic-card-detail>
+  </ng-container> -->
+  <ng-container *ngFor="let graphicsCard of graphicCards">
+    <app-graphic-card-detail [graphicCard]="graphicsCard" (buttonClicked)="showDetail($event)"></app-graphic-card-detail>
+  </ng-container>
+</div>
