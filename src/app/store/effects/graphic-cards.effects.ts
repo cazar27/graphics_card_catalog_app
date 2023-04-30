@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
 import { GraphicCardService } from 'src/app/services/graphic-card.service';
 import { loadGraphicCards, loadGraphicCardsFailure, loadGraphicCardsSuccess } from '../actions/graphic-card.actions';
 

@@ -1,2 +1,4 @@
 <app-toolbar title="Graphics Cards Information"></app-toolbar>
-<router-outlet></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet  #outlet="outlet"></router-outlet>
+</div>

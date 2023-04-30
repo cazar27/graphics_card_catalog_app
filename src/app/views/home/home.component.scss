@@ -1,0 +1,6 @@
+@import '/src/assets/scrollbar';
+
+.container-list {
+  height: calc(100vh - 64px);
+  @include scrollbar;
+}

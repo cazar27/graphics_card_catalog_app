@@ -10,7 +10,7 @@ function slideTo() {
   return [
     query(':enter',
       [
-        style({ opacity: 0, position: 'absolute', left: 'calc( 50% - 20rem )', top: 0})
+        style({ opacity: 0, position: 'absolute', top: '64px'})
       ],
       { optional: true }
     ),
@@ -18,15 +18,15 @@ function slideTo() {
     query(':leave',
       [
         style({ opacity: 1 }),
-        animate('0.5s', style({ opacity: 0 },))
+        animate('0.300s', style({ opacity: 0 },))
       ],
       { optional: true }
     ),
 
     query(':enter',
       [
-        style({ opacity: 0, position: 'absolute', left: 'calc( 50% - 20rem )', top: 0 }),
-        animate('0.5s', style({ opacity: 1}))
+        style({ opacity: 0, position: 'absolute', top: '64px' }),
+        animate('0.300s', style({ opacity: 1}))
       ],
       { optional: true }
     ),

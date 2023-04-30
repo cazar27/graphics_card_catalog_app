@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from "@angular/common";
 
 import { GraphicCard } from 'src/app/interfaces/graphic-card.interface';
 import { GraphicCardService } from 'src/app/services/graphic-card.service';
@@ -12,20 +13,20 @@ import { GraphicCardService } from 'src/app/services/graphic-card.service';
 })
 export class GraphicCardDetailComponent implements OnInit {
 
-  @Input() graphicCard!: GraphicCard;
+  @Input() graphicCard: GraphicCard | undefined;
   @Output() buttonClicked = new EventEmitter<number>();
-  loadGraphicCards = false;
+  public loadGraphicCards = false;
 
   constructor(
     private graphicCardsService: GraphicCardService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if(this.graphicCard === undefined) {
       this.route.params.subscribe(params => {
         const id = + params['id'];
-
         this.graphicCardsService.getGraphicCard(id).subscribe(data => {
           this.graphicCard = data;
         });
@@ -35,13 +36,11 @@ export class GraphicCardDetailComponent implements OnInit {
     }
   }
 
-  onClick(id: number) {
+  public onClick(id: number): void {
     this.buttonClicked.emit(id);
   }
 
-  goBack() {
-
+  public goBack(): void {
+    this.location.back();
   }
-
-
 }

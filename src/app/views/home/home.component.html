@@ -1,0 +1,6 @@
+
+<cdk-virtual-scroll-viewport itemSize="215"  class="container-list" (scrolledIndexChange)="onScroll($event)">
+<div class="container">
+    <app-graphic-card-list-container [data]="graphicCards" [dataState]="graphicCards$"></app-graphic-card-list-container>
+  </div>
+</cdk-virtual-scroll-viewport>

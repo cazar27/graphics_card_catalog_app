@@ -10,8 +10,8 @@ import { DialogData } from 'src/app/interfaces/data-dialog.interface';
 
 export class AlertComponent {
 
-  title = 'title';
-  desc = 'description';
+  public title = 'title';
+  public desc = 'description';
 
   constructor(
     public dialogRef: MatDialogRef<AlertComponent>,

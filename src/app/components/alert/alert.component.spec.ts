@@ -46,9 +46,9 @@ describe('AlertComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     component.title = 'title';
-    component.description = 'description';
+    component.desc = 'desc';
     expect(component.title).toEqual('title');
-    expect(component.description).toEqual('description');
+    expect(component.desc).toEqual('desc');
   });
 
   it('should create', () => {

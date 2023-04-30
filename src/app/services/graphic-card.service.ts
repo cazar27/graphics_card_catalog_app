@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { environment } from 'src/enviroments/environment.prod';
 import { GraphicCard } from '../interfaces/graphic-card.interface';
 
 @Injectable({
@@ -246,22 +244,31 @@ export class GraphicCardService {
     ]
   };
 
-  private _baseUrl: string = environment.baseUrl;
-
-  constructor(private http: HttpClient) { }
-
-  getGraphicCards(): Observable<any> {
+  getGraphicCards(): Observable<GraphicCard[]> {
     const data$ = of(this.graphicCards.data);
     return data$;
-    //return this.http.get<any>(this._baseUrl);
   }
 
-  getGraphicCard(id: number): Observable<any> {
+  getGraphicCardsPage(pageSize: number, pageNumber: number): Observable<GraphicCard[]> {
+    const startIndex = (pageNumber - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const data = this.graphicCards.data.slice(startIndex, endIndex);
+    const data$ = of(data);
+    return data$;
+  }
+
+  getGraphicCard(id: number): Observable<GraphicCard | undefined> {
     const searchGcard = this.graphicCards.data.find(gc => gc.id === id);
     const data$ = of(searchGcard);
     return data$;
-    //return this.http.get<any>(this._baseUrl);
   }
+
+  searchGraphicCards(name: string): Observable<GraphicCard[] | undefined> {
+    const data = this.graphicCards.data.filter((graphicCard: GraphicCard) => graphicCard.name.includes(name));
+    const data$ = of(data);
+    return data$;
+  }
+
 
 }
 
